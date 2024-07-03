@@ -1,0 +1,30 @@
+# Ignorar arquivos de cache do Python
+__pycache__
+*.pyc
+*.pyo
+
+# Ignorar arquivos de configuração de ambiente virtual
+venv
+env
+engine
+.virtualenv
+
+# Ignorar arquivos e diretórios do sistema operacional
+.DS_Store
+*.swp
+*~
+
+# Ignorar arquivos de configuração de IDE
+.vscode
+.idea
+*.code-workspace
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos do Docker
+Dockerfile
+docker-compose.yml
+
+# Ignorar arquivos e diretórios específicos do projeto
+migrations/

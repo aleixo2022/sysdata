@@ -1,4 +1,5 @@
-version: '3.8'
+version: '3.9'  # Atualize a versão para uma recente
+
 services:
   db:
     build: ./db
@@ -25,7 +26,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - .:/workspace
+      - .:/workspace/credapp
     networks:
       - app-network
 
@@ -40,7 +41,21 @@ services:
     ports:
       - "5001:5001"
     volumes:
+      - .:/workspace/datasys
+    networks:
+      - app-network
+
+  alembic:
+    image: python:3.9
+    working_dir: /workspace/credapp
+    volumes:
       - .:/workspace
+    environment:
+      DB_HOST: db
+      DB_NAME: datadb
+      DB_USER: admin
+      DB_PASSWORD: sysbipass**++
+    command: bash -c "pip install -r requirements.txt && alembic init migrations"
     networks:
       - app-network
 
