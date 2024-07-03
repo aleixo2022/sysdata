@@ -1,0 +1,5 @@
+FROM postgres:15-alpine
+ENV POSTGRES_DB=datadb
+ENV POSTGRES_USER=admin
+ENV POSTGRES_PASSWORD=sysbipass**++
+EXPOSE 5432

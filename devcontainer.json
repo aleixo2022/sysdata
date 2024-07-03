@@ -1,0 +1,15 @@
+{
+  "name": "Flask PostgreSQL Dev Container",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "credapp",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "python.pythonPath": "/usr/local/bin/python"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ],
+  "postCreateCommand": "pip install -r requirements.txt",
+  "remoteUser": "root"
+}

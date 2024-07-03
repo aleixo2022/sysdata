@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+  db:
+    build: ./db
+    container_name: my_postgres_db
+    environment:
+      POSTGRES_DB: datadb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: sysbipass**++
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  credapp:
+    build: ./credapp
+    container_name: credapp
+    environment:
+      DB_HOST: db
+      DB_NAME: datadb
+      DB_USER: admin
+      DB_PASSWORD: sysbipass**++
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspace
+    networks:
+      - app-network
+
+  datasys:
+    build: ./datasys
+    container_name: datasys
+    environment:
+      DB_HOST: db
+      DB_NAME: datadb
+      DB_USER: admin
+      DB_PASSWORD: sysbipass**++
+    ports:
+      - "5001:5001"
+    volumes:
+      - .:/workspace
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
